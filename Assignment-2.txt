@@ -317,7 +317,13 @@ ls -l | awk '{ print $1 }'
 
 ---------------------------------------------------------------------------------------
 10. Write a shell script to print the reverse of an input number.
+>	#!/bin/bash  
+echo  -e "Enter a number to reverse: \c"
+read num
+echo -e "The reverse of $num is: \c" 
+echo $num | rev
 
+solution 2
 >	#!/bin/bash
 
 	echo 'Enter a number : '
@@ -335,7 +341,32 @@ ls -l | awk '{ print $1 }'
 	echo 'Reverse : ' $sum
 
 ---------------------------------------------------------------------------------------
+PASSWORD QUESTION
 
-
-
+echo "enter the password"
+ read password
+  len="${#password}" 
+  if  [ $len -ge 8 ]  
+    then 
+        echo "$password" | grep -q [0-9] 
+    if [ $? -eq 0 ]  
+        then
+             echo "$password" | grep -q [A-Z] 
+        if [ $? -eq 0 ]  
+            then
+                 echo "$password" | grep -q [a-z]
+            if [ $? -eq 0 ]  
+                then 
+                    echo "$password" | grep -q [$,@,\#,%]
+                if [ $? -eq 0 ]  
+                    then echo "Strong password"
+                else echo "weak password include special chars"
+                fi 
+            else echo "weak password include lower case char" 
+            fi
+        else echo "weak password include capital char" 
+        fi 
+    else echo "please include"
+    fi
+fi
 
